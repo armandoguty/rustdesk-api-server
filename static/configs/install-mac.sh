@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # RustDesk version (manually set by now)
-VERSION="1.3.9"
+RD_VERSION="1.4.3"
 
 # Assign the value random password to the password variable
 rustdesk_pw=$(openssl rand -hex 4)
@@ -18,7 +18,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Specify the path to the rustdesk.dmg file
-dmg_file="/tmp/rustdesk-1.3.7.dmg"
+dmg_file="/tmp/rustdesk-${RD_VERSION}.dmg"
 
 # Specify the mount point for the DMG (temporary directory)
 mount_point="/Volumes/RustDesk"
@@ -27,9 +27,9 @@ mount_point="/Volumes/RustDesk"
 echo "Downloading RustDesk Now"
 
 if [[ $(arch) == 'arm64' ]]; then
-curl -L https://github.com/rustdesk/rustdesk/releases/download/"${VERSION}"/rustdesk-"${VERSION}"-aarch64.dmg --output "$dmg_file"
+curl -L https://github.com/rustdesk/rustdesk/releases/download/"${RD_VERSION}"/rustdesk-"${RD_VERSION}"-aarch64.dmg --output "$dmg_file"
 else
-curl -L https://github.com/rustdesk/rustdesk/releases/download/"${VERSION}"/rustdesk-"${VERSION}"-x86_64.dmg --output "$dmg_file"
+curl -L https://github.com/rustdesk/rustdesk/releases/download/"${RD_VERSION}"/rustdesk-"${RD_VERSION}"-x86_64.dmg --output "$dmg_file"
 fi
 
 # Mount the DMG file to the specified mount point

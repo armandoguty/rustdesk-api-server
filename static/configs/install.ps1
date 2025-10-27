@@ -1,7 +1,7 @@
 $ErrorActionPreference= 'silentlycontinue'
 
 # RustDesk version (manually set by now)
-$version = "1.3.9"
+$rd_version = "1.4.3"
 
 # Assign the value random password to the password variable
 $rustdesk_pw=(-join ((65..90) + (97..122) | Get-Random -Count 12 | % {[char]$_}))
@@ -21,7 +21,7 @@ if (-Not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 
 $rdver = ((Get-ItemProperty  "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\RustDesk\").Version)
 
-if($rdver -eq $version)
+if($rdver -eq $rd_version)
 {
 write-output "RustDesk $rdver is the newest version"
 
@@ -34,7 +34,7 @@ If (!(Test-Path C:\Temp)) {
 
 cd C:\Temp
 
-powershell Invoke-WebRequest "https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.exe" -Outfile "rustdesk.exe"
+powershell Invoke-WebRequest "https://github.com/rustdesk/rustdesk/releases/download/$rd_version/rustdesk-$rd_version-x86_64.exe" -Outfile "rustdesk.exe"
 Start-Process .\rustdesk.exe --silent-install -wait
 
 $ServiceName = 'Rustdesk'

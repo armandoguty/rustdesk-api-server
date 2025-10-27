@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # RustDesk version (manually set by now)
-VERSION="1.3.9"
+RD_VERSION="1.4.3"
 
 # Assign a random value to the password variable
 rustdesk_pw=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1)
@@ -71,11 +71,11 @@ fi
 
 echo "Installing RustDesk"
 if [ "${ID}" = "debian" ] || [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian" ]  || [ "${UPSTREAM_ID}" = "ubuntu" ] || [ "${UPSTREAM_ID}" = "debian" ]; then
-    wget https://github.com/rustdesk/rustdesk/releases/download/"${VERSION}"/rustdesk-"${VERSION}"-"${ARCH}".deb
-    apt-get install -fy ./rustdesk-"${VERSION}"-"${ARCH}".deb > null
+    wget https://github.com/rustdesk/rustdesk/releases/download/"${RD_VERSION}"/rustdesk-"${RD_VERSION}"-"${ARCH}".deb
+    apt-get install -fy ./rustdesk-"${RD_VERSION}"-"${ARCH}".deb > null
 elif [ "$OS" = "CentOS" ] || [ "$OS" = "RedHat" ] || [ "$OS" = "Fedora Linux" ]  || [ "${UPSTREAM_ID}" = "rhel" ] ; then
-    wget https://github.com/rustdesk/rustdesk/releases/download/"${VERSION}"/rustdesk-"${VERSION}"-0."${ARCH}".rpm
-    yum localinstall ./rustdesk-"${VERSION}"-0."${ARCH}".rpm -y > null
+    wget https://github.com/rustdesk/rustdesk/releases/download/"${RD_VERSION}"/rustdesk-"${RD_VERSION}"-0."${ARCH}".rpm
+    yum localinstall ./rustdesk-"${RD_VERSION}"-0."${ARCH}".rpm -y > null
 else
     echo "Unsupported OS"
     # here you could ask the user for permission to try and install anyway
