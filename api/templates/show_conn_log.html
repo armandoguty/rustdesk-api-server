@@ -43,7 +43,7 @@
       <span class="step-links">
           {% if page_obj.has_previous %}
               <button class="layui-btn" ><a href="?page=1">&laquo; {{ "First" }}</a></button>
-              <button class="layui-btn" ><a href="?page={{ page_obj.previous_page_number }}">{{ "Previous" }}</a></button>
+              <button class="layui-btn" ><a href="?page={{ page_obj.previous_page_number }}">&lsaquo; {{ "Previous" }}</a></button>
           {% endif %}
           {% if page_obj.paginator.num_pages > 1 %}
           <span class="current">
@@ -51,8 +51,8 @@
           </span>
           {% endif %}
           {% if page_obj.has_next %}
-              <button class="layui-btn" > <a href="?page={{ page_obj.next_page_number }}">{{ "First" }}</a></button>
-              <button class="layui-btn" ><a href="?page={{ page_obj.paginator.num_pages }}">{{ "Next" }} &raquo;</a></button>
+              <button class="layui-btn" > <a href="?page={{ page_obj.next_page_number }}">{{ "Next" }} &rsaquo;</a></button>
+              <button class="layui-btn" ><a href="?page={{ page_obj.paginator.num_pages }}">{{ "Last" }} &raquo;</a></button>
           {% endif %}
       </span>
   </div>  
